@@ -55,7 +55,7 @@ header nav ul.menu li a:hover {
 
 /* Sección Hero */
 .hero {
-    background-image: url('imagen/hero.jpg');
+    background-image: url('imagen/portada.jpeg');
     background-size: cover;
     background-position: center;
     color: white;
@@ -204,7 +204,13 @@ footer .contact-info li {
 .exercise-list li a:hover {
     background-color: #3e8e41;
 }
-
+/* Texto adicional para mejorar espaciado */
+section p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
     header .container {
@@ -219,3 +225,4 @@ footer .contact-info li {
         grid-template-columns: 1fr;
     }
 }
+
