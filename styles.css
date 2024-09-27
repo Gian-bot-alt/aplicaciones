@@ -1,0 +1,185 @@
+/* Reset de márgenes y padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul.menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav ul.menu li {
+    position: relative;
+}
+
+nav ul.menu li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+}
+
+nav ul.menu li a:hover {
+    background-color: #3e8e41;
+    border-radius: 5px;
+}
+
+.submenu ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #4CAF50;
+    padding: 10px 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.submenu:hover ul {
+    display: block;
+}
+
+.submenu ul li {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.submenu ul li a {
+    display: block;
+    padding: 0.5rem 1.5rem;
+    white-space: nowrap;
+}
+
+.submenu ul li a:hover {
+    background-color: #3e8e41;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+section {
+    background-color: white;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+section img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    color: #4CAF50;
+    margin-bottom: 1rem;
+}
+
+/* Botón de descarga */
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #3e8e41;
+}
+
+/* Footer mejorado */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 2rem 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    padding: 1rem;
+}
+
+.footer-section h3 {
+    margin-bottom: 1rem;
+    color: #4CAF50;
+}
+
+.footer-section ul {
+    list-style-type: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    color: #4CAF50;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 1rem;
+    background-color: #222;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+/* Añadir una animación al hover en los enlaces */
+a:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
