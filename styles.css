@@ -1,0 +1,232 @@
+/* Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    line-height: 1.6; /* Añadir espacio entre líneas */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Estilos del Header */
+header {
+    background-color: #333;
+    color: white;
+    padding: 1.5rem 0; /* Añadir más padding */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 2rem; /* Tamaño más grande */
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 0; /* Asegurar que no haya margen adicional */
+}
+
+header nav ul.menu {
+    list-style: none;
+    display: flex;
+    gap: 2rem; /* Mayor espacio entre los enlaces */
+}
+
+header nav ul.menu li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header nav ul.menu li a:hover {
+    color: #4CAF50;
+}
+
+/* Sección Hero */
+.hero {
+    background-image: url('imagen/portada.jpeg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 6rem 0; /* Más padding arriba y abajo */
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem; /* Mayor espacio debajo del título */
+}
+
+.hero p {
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem; /* Más espacio debajo del párrafo */
+}
+
+.hero .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem 2rem; /* Botones más grandes */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.hero .btn:hover {
+    background-color: #388E3C;
+}
+
+/* Sección Proyectos */
+.proyectos {
+    padding: 4rem 0; /* Mayor espacio arriba y abajo */
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+.proyectos h2 {
+    color: #333;
+    margin-bottom: 3rem; /* Más espacio debajo del título */
+    font-size: 2.2rem;
+}
+
+/* Estilo de contenedor para las tarjetas como lista horizontal */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center; /* Centrar las tarjetas horizontalmente */
+}
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    display: flex;
+    align-items: center;
+    max-width: 1220px; /* Aumenta el ancho máximo de la tarjeta */
+    width: 100%; /* Asegurarse de que ocupen todo el espacio disponible */
+    justify-content: space-between; /* Distribuir contenido a lo largo de la tarjeta */
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    max-width: 200px; /* Ajustar el tamaño de la imagen */
+    height: auto;
+    border-radius: 8px;
+    margin-right: 2rem;
+}
+
+.card h3 {
+    margin: 0 1rem 1rem 0;
+    color: #333;
+    font-size: 1.6rem;
+    flex-grow: 1; /* Permitir que el título ocupe el espacio sobrante */
+}
+
+.card p {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: #555;
+    text-align: left;
+    flex-grow: 1; /* Hacer que el texto también se expanda en la tarjeta */
+}
+
+.card .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+}
+
+.card .btn:hover {
+    background-color: #388E3C;
+}
+
+/* Ajustes para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .grid {
+        flex-direction: column;
+    }
+
+    .card {
+        flex-direction: column;
+        text-align: center;
+        max-width: 100%; /* Asegurar que la tarjeta ocupe todo el ancho en pantallas pequeñas */
+    }
+
+    .card img {
+        margin-right: 0;
+        margin-bottom: 1rem;
+        max-width: 100px;
+    }
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 4rem 0; /* Mayor padding en el footer */
+    text-align: center;
+}
+
+footer h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+footer .contact-info {
+    list-style: none;
+    margin-bottom: 2rem;
+}
+
+footer .contact-info li {
+    margin-bottom: 1rem; /* Más espacio entre los elementos de contacto */
+}
+
+.footer-bottom {
+    background-color: #222;
+    padding: 1.5rem;
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: #aaa;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .grid {
+        flex-direction: column;
+    }
+
+    .card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .card img {
+        margin-right: 0;
+        margin-bottom: 1rem;
+        max-width: 100px;
+    }
+}

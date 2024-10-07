@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 05</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh; /* Hacer que ocupe toda la altura de la ventana */
+        }
+        nav {
+            background-color: #333;
+            padding: 20px;
+            width: 200px; /* Ancho del slider */
+            color: white;
+        }
+        nav button {
+            background-color: #444;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            margin: 5px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        nav button:hover {
+            background-color: #555; /* Color al pasar el ratón */
+        }
+        section {
+            flex-grow: 1; /* Ocupa el espacio restante */
+            padding: 20px;
+            display: none; /* Ocultar todas las secciones por defecto */
+            border-left: 1px solid #ccc; /* Línea divisoria */
+        }
+        section.active {
+            display: block; /* Mostrar solo la sección activa */
+        }
+        h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <h3>Semana 05</h3>
+    <button onclick="showExercise(1)">Ejercicio 01</button>
+    <button onclick="showExercise(2)">Ejercicio 02</button>
+    <button onclick="showExercise(3)">Ejercicio 03</button>
+    <button onclick="showExercise(4)">Ejercicio 04</button>
+    <button onclick="showExercise(5)">Ejercicio 05</button>
+    <button onclick="showExercise(6)">Ejercicio 06</button>
+    <button onclick="showExercise(7)">Ejercicio 07</button>
+    <button onclick="showExercise(8)">Ejercicio 08</button>
+    <button onclick="showExercise(9)">Ejercicio 09</button>
+    <button><a href="proyectos.html">VOLVER</a> </button>
+    
+</nav>
+
+<section id="exercise-1" class="active">
+    <h2>Ejercicio 01</h2>
+    <p>Contenido del ejercicio 01.</p>
+</section>
+
+<section id="exercise-2">
+    <h2>Ejercicio 02</h2>
+    <p>Contenido del ejercicio 02.</p>
+</section>
+
+<section id="exercise-3">
+    <h2>Ejercicio 03</h2>
+    <p>Contenido del ejercicio 03.</p>
+</section>
+
+
+
+<script>
+    function showExercise(exerciseNumber) {
+        // Ocultar todas las secciones
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => {
+            section.classList.remove('active');
+        });
+
+        // Mostrar la sección seleccionada
+        const activeSection = document.getElementById(`exercise-${exerciseNumber}`);
+        activeSection.classList.add('active');
+    }
+</script>
+
+</body>
+</html>

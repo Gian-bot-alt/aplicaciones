@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 05</title>
+    <link rel="stylesheet" href="stylecodigos.css">
+</head>
+<body>
+
+<nav>
+    <h3>Semana 05</h3>
+    <button onclick="showExercise(1)">Ejercicio 01</button>
+    <button onclick="showExercise(2)">Ejercicio 02</button>
+    <button onclick="showExercise(3)">Ejercicio 03</button>
+    <button onclick="showExercise(4)">Ejercicio 04</button>
+    <button onclick="showExercise(5)">Ejercicio 05</button>
+    <button onclick="showExercise(6)">Ejercicio 06</button>
+    <button onclick="showExercise(7)">Ejercicio 07</button>
+    <button onclick="showExercise(8)">Ejercicio 08</button>
+    <button onclick="showExercise(9)">Ejercicio 09</button>
+    <button><a href="proyectos.html" style="color: white; text-decoration: none;">VOLVER</a></button>
+</nav>
+
+<section id="exercise-1" class="active">
+    <h2>Ejercicio 01: Sumatoria de números primos en un rango</h2>
+<p><strong>Enunciado:</strong> Escribe un programa que solicite dos números y calcule la sumatoria de los números primos que existen entre esos dos valores. Utiliza un bucle for o while para recorrer los números en el rango y verifica si son primos.</p>
+<p><strong>Requerimientos Funcionales:</strong></p>
+<ul>
+    <li>El programa debe solicitar dos números enteros que representen el rango.</li>
+    <li>El programa debe calcular la suma de todos los números primos dentro del rango dado.</li>
+    <li>Debe manejar correctamente los límites del rango y verificar si los números son primos.</li>
+</ul>
+<p><strong>Código en Dart:</strong></p>
+<div class="code-container">
+    <button class="copy-code" onclick="copyCode('dart-code-1')">Copiar código</button>
+    <pre id="dart-code-1">
+import 'dart:io';
+
+bool esPrimo(int num) {
+  if (num <= 1) return false;
+  for (int i = 2; i <= num ~/ 2; i++) {
+    if (num % i == 0) return false;
+  }
+  return true;
+}
+
+void main() {
+  stdout.write('Ingrese el límite inferior: ');
+  int inicio = int.parse(stdin.readLineSync()!);
+
+  stdout.write('Ingrese el límite superior: ');
+  int fin = int.parse(stdin.readLineSync()!);
+
+  int sumaPrimos = 0;
+
+  for (int i = inicio; i <= fin; i++) {
+    if (esPrimo(i)) {
+      sumaPrimos += i;
+    }
+  }
+
+  print('La suma de los números primos en el rango es: \$sumaPrimos');
+    </pre>
+</div>
+
+</section>
+
+<section id="exercise-2">
+    <h2>Ejercicio 2: Números de Fibonacci hasta N términos</h2>
+<p><strong>Enunciado:</strong> Implementa un programa que genere la secuencia de Fibonacci hasta un número n de términos ingresado por el usuario. Utiliza un bucle while o for para ir generando los números de la secuencia.</p>
+<p><strong>Requerimientos Funcionales:</strong></p>
+<ul>
+    <li>El programa debe solicitar al usuario la cantidad de términos de la secuencia de Fibonacci que desea generar.</li>
+    <li>Debe generar y mostrar los términos de la secuencia hasta el valor indicado.</li>
+</ul>
+<p><strong>Código en Dart:</strong></p>
+<div class="code-container">
+    <button class="copy-code" onclick="copyCode('dart-code-2')">Copiar código</button>
+    <pre id="dart-code-2">
+import 'dart:io';
+
+void fibonacci(int n) {
+  int a = 0, b = 1, siguiente;
+  
+  print('Secuencia de Fibonacci:');
+  for (int i = 0; i < n; i++) {
+    stdout.write('$a ');
+    siguiente = a + b;
+    a = b;
+    b = siguiente;
+  }
+}
+
+void main() {
+  stdout.write('Ingrese el número de términos de Fibonacci: ');
+  int n = int.parse(stdin.readLineSync()!);
+
+  fibonacci(n);
+    </pre>
+</div>
+
+</section>
+<section id="exercise-3">
+    <h2>Ejercicio 3: Factorial de números grandes</h2>
+    <p><strong>Enunciado:</strong> Escribe un programa que calcule el factorial de un número grande (por ejemplo, 100) utilizando estructuras repetitivas y el tipo de datos BigInteger para manejar grandes números.</p>
+    <p><strong>Requerimientos Funcionales:</strong></p>
+    <ul>
+        <li>El programa debe solicitar un número grande (por ejemplo, 100) e imprimir su factorial.</li>
+        <li>Debe manejar números grandes usando BigInt.</li>
+    </ul>
+    <p><strong>Código en Dart:</strong></p>
+    <div class="code-container">
+        <button class="copy-code" onclick="copyCode('dart-code-3')">Copiar código</button>
+        <pre id="dart-code-3">
+    import 'dart:io';
+    
+    BigInt factorial(BigInt n) {
+      if (n == BigInt.one) return BigInt.one;
+      return n * factorial(n - BigInt.one);
+    }
+    
+    void main() {
+      stdout.write('Ingrese un número para calcular su factorial: ');
+      BigInt numero = BigInt.parse(stdin.readLineSync()!);
+    
+      BigInt resultado = factorial(numero);
+    
+      print('El factorial de \$numero es: \$resultado');
+        </pre>
+    </div>
+    
+</section>
+
+<section id="exercise-4">
+    <h2>Ejercicio 4: Inversión de un número</h2>
+    <p><strong>Enunciado:</strong> Crea un programa que invierta los dígitos de un número entero ingresado por el usuario, utilizando un bucle while para extraer y reordenar los dígitos.</p>
+    <p><strong>Requerimientos Funcionales:</strong></p>
+    <ul>
+        <li>El programa debe solicitar un número entero positivo.</li>
+        <li>Debe invertir los dígitos del número e imprimir el número invertido.</li>
+    </ul>
+    <p><strong>Código en Dart:</strong></p>
+    <div class="code-container">
+        <button class="copy-code" onclick="copyCode('dart-code-4')">Copiar código</button>
+        <pre id="dart-code-4">
+    import 'dart:io';
+    
+    void main() {
+      stdout.write('Ingrese un número: ');
+      int numero = int.parse(stdin.readLineSync()!);
+    
+      int invertido = 0;
+    
+      while (numero > 0) {
+        int digito = numero % 10;
+        invertido = invertido * 10 + digito;
+        numero ~/= 10;
+      }
+    
+      print('El número invertido es: \$invertido');
+        </pre>
+    </div>
+    
+</section>
+
+<section id="exercise-5">
+    <h2>Ejercicio 5: Suma de matrices NxN</h2>
+    <p><strong>Enunciado:</strong> Escribe un programa que solicite dos matrices de tamaño N x N (donde N es proporcionado por el usuario) y luego realice la suma de las dos matrices utilizando bucles anidados for.</p>
+    <p><strong>Requerimientos Funcionales:</strong></p>
+    <ul>
+        <li>El programa debe solicitar al usuario el tamaño de las matrices N x N.</li>
+        <li>Debe permitir ingresar los valores para dos matrices.</li>
+        <li>Debe sumar las matrices y mostrar el resultado.</li>
+    </ul>
+    <p><strong>Código en Dart:</strong></p>
+    <div class="code-container">
+        <button class="copy-code" onclick="copyCode('dart-code-5')">Copiar código</button>
+        <pre id="dart-code-5">
+    import 'dart:io';
+    
+    void main() {
+      stdout.write('Ingrese el tamaño de las matrices (N): ');
+      int n = int.parse(stdin.readLineSync()!);
+    
+      List<List<int>> matriz1 = List.generate(n, (_) => List.filled(n, 0));
+      List<List<int>> matriz2 = List.generate(n, (_) => List.filled(n, 0));
+      List<List<int>> suma = List.generate(n, (_) => List.filled(n, 0));
+    
+      print('Ingrese los valores de la primera matriz:');
+      for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+          stdout.write('Elemento [$i][$j]: ');
+          matriz1[i][j] = int.parse(stdin.readLineSync()!);
+        }
+      }
+    
+      print('Ingrese los valores de la segunda matriz:');
+      for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+          stdout.write('Elemento [$i][$j]: ');
+          matriz2[i][j] = int.parse(stdin.readLineSync()!);
+        }
+      }
+    
+      for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+          suma[i][j] = matriz1[i][j] + matriz2[i][j];
+        }
+      }
+    
+      print('La suma de las matrices es:');
+      for (int i = 0; i < n; i++) {
+        print(suma[i]);
+      }
+        </pre>
+    </div>
+    
+</section>
+
+<section id="exercise-6">
+    <h2>Ejercicio 6: Número perfecto</h2>
+    <p><strong>Enunciado:</strong> Implementa un programa que encuentre y muestre todos los números perfectos entre 1 y 10,000. Un número perfecto es aquel que es igual a la suma de sus divisores propios. Usa un bucle para encontrar los divisores de cada número.</p>
+    <p><strong>Requerimientos Funcionales:</strong></p>
+    <ul>
+        <li>El programa debe mostrar todos los números perfectos entre 1 y 10,000.</li>
+        <li>Un número perfecto es aquel que es igual a la suma de sus divisores propios.</li>
+    </ul>
+    <p><strong>Código en Dart:</strong></p>
+    <div class="code-container">
+        <button class="copy-code" onclick="copyCode('dart-code-6')">Copiar código</button>
+        <pre id="dart-code-6">
+    import 'dart:io';
+    
+    bool esPerfecto(int numero) {
+      int sumaDivisores = 0;
+    
+      for (int i = 1; i < numero; i++) {
+        if (numero % i == 0) {
+          sumaDivisores += i;
+        }
+      }
+    
+      return sumaDivisores == numero;
+    }
+    
+    void main() {
+      print('Números perfectos entre 1 y 10,000:');
+      for (int i = 1; i <= 10000; i++) {
+        if (esPerfecto(i)) {
+          print(i);
+        }
+      }
+        </pre>
+    </div>
+    
+</section>
+
+<section id="exercise-7">
+    <h2>Ejercicio 7: Matriz en espiral</h2>
+    <p><strong>Enunciado:</strong>Crea un programa que imprima una matriz cuadrada de tamaño n x n en forma de espiral. Utiliza bucles anidados para recorrer las posiciones de la matriz en el orden adecuado.</p>
+    <p><strong>Requerimientos Funcionales:</strong></p>
+    <ul>
+        <li>El programa debe solicitar al usuario el tamaño de la matriz cuadrada.</li>
+        <li>Debe generar y mostrar la matriz en forma de espiral.</li>
+    </ul>
+    <p><strong>Código en Dart:</strong></p>
+    <div class="code-container">
+        <button class="copy-code" onclick="copyCode('dart-code-7')">Copiar código</button>
+        <pre id="dart-code-7">
+    import 'dart:io';
+    
+    void main() {
+      stdout.write('Ingrese el tamaño de la matriz: ');
+      int n = int.parse(stdin.readLineSync()!);
+      
+      List<List<int>> matriz = List.generate(n, (_) => List.filled(n, 0));
+      
+      int valor = 1;
+      int top = 0, bottom = n - 1, left = 0, right = n - 1;
+    
+      while (top <= bottom && left <= right) {
+        for (int i = left; i <= right; i++) {
+          matriz[top][i] = valor++;
+        }
+        top++;
+        for (int i = top; i <= bottom; i++) {
+          matriz[i][right] = valor++;
+        }
+        right--;
+        if (top <= bottom) {
+          for (int i = right; i >= left; i--) {
+            matriz[bottom][i] = valor++;
+          }
+          bottom--;
+        }
+        if (left <= right) {
+          for (int i = bottom; i >= top; i--) {
+            matriz[i][left] = valor++;
+          }
+          left++;
+        }
+      }
+    
+      print('Matriz en forma de espiral:');
+      for (var fila in matriz) {
+        print(fila);
+      }
+        </pre>
+    </div>
+    
+</section>
+
+<section id="exercise-8">
+    <h2>Ejercicio 8: Verificación de un número Armstrong</h2>
+    <p><strong>Enunciado:</strong>Escribe un programa que verifique si un número de n dígitos ingresado por el usuario es un número de Armstrong (o narcisista). Utiliza un bucle for para separar y elevar cada dígito a la potencia correspondiente.</p>
+    <p><strong>Requerimientos Funcionales:</strong></p>
+    <ul>
+        <li>El programa debe solicitar un número entero ingresado por el usuario.</li>
+        <li>Debe verificar si el número se lee igual en ambas direcciones.</li>
+    </ul>
+    <p><strong>Código en Dart:</strong></p>
+    <div class="code-container">
+        <button class="copy-code" onclick="copyCode('dart-code-8')">Copiar código</button>
+        <pre id="dart-code-8">
+    import 'dart:io';
+    
+    void main() {
+      stdout.write('Ingrese un número: ');
+      String numero = stdin.readLineSync()!;
+    
+      String invertido = numero.split('').reversed.join('');
+      if (numero == invertido) {
+        print('El número \$numero es un palíndromo.');
+      } else {
+        print('El número \$numero no es un palíndromo.');
+      }
+        </pre>
+    </div>
+    
+</section>
+
+<section id="exercise-9">
+    <h2>Ejercicio 9: Cálculo de potencias usando multiplicación repetida</h2>
+    <p><strong>Enunciado:</strong>Crea un programa que calcule la potencia de un número usando multiplicación repetida, es decir, sin utilizar la función Math.pow(). El programa debe solicitar una base y un exponente, y luego calcular la potencia utilizando un bucle while o for.</p>
+    <p><strong>Requerimientos Funcionales:</strong></p>
+    <ul>
+        <li>El programa debe solicitar una base y un exponente.</li>
+        <li>Debe calcular la potencia usando multiplicación repetida y mostrar el resultado.</li>
+    </ul>
+    <p><strong>Código en Dart:</strong></p>
+    <div class="code-container">
+        <button class="copy-code" onclick="copyCode('dart-code-9')">Copiar código</button>
+        <pre id="dart-code-9">
+    import 'dart:io';
+    
+    void main() {
+      stdout.write('Ingrese la base: ');
+      int base = int.parse(stdin.readLineSync()!);
+    
+      stdout.write('Ingrese el exponente: ');
+      int exponente = int.parse(stdin.readLineSync()!);
+    
+      int resultado = 1;
+      for (int i = 0; i < exponente; i++) {
+        resultado *= base;
+      }
+    
+      print('\$base elevado a la \$exponente es: \$resultado');
+        </pre>
+    </div>
+    
+</section>
+
+<script>
+    // Función para mostrar el ejercicio seleccionado
+    function showExercise(exerciseNumber) {
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => section.classList.remove('active'));
+        const activeSection = document.getElementById(`exercise-${exerciseNumber}`);
+        activeSection.classList.add('active');
+    }
+
+    // Función para copiar el código
+    function copyCode(elementId) {
+        const codeElement = document.getElementById(elementId).innerText;
+        navigator.clipboard.writeText(codeElement).then(() => {
+            alert('Código copiado al portapapeles');
+        }).catch(err => {
+            console.error('Error al copiar el código', err);
+        });
+    }
+</script>
+
+</body>
+</html>

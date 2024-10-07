@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    background-color: #f4f4f4; /* Fondo gris claro */
+}
+
+nav {
+    background-color: #333;
+    padding: 20px;
+    width: 220px; /* Ancho del slider */
+    color: white;
+    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.2); /* Sombra para el menú */
+}
+
+nav button {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+nav button:hover {
+    background-color: #555;
+}
+
+section {
+    flex-grow: 1;
+    padding: 20px;
+    display: none;
+    border-left: 1px solid #ccc;
+    background-color: white; /* Fondo blanco para el contenido */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra para el contenido */
+    overflow: auto;
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+section.active {
+    display: block;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 15px; /* Espacio debajo del título */
+    font-size: 1.8em; /* Tamaño de fuente del título */
+    border-bottom: 2px solid #00b894; /* Línea debajo del título */
+    padding-bottom: 5px; /* Espacio interno en la parte inferior */
+}
+
+p, ul {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #555;
+}
+
+ul {
+    margin-left: 20px; /* Espacio a la izquierda para la lista */
+    padding: 5px 0; /* Espacio arriba y abajo en la lista */
+}
+
+li {
+    margin-bottom: 5px; /* Espacio entre elementos de la lista */
+}
+
+/* Estilo para el código */
+.code-container {
+    position: relative;
+    margin-top: 20px;
+}
+
+pre {
+    background-color: #2d2d2d; /* Fondo negro para el código */
+    color: #f8f8f2; /* Color del texto */
+    padding: 15px;
+    border-radius: 8px;
+    overflow: auto;
+    max-height: 400px; /* Altura máxima del código */
+    font-size: 1em;
+    white-space: pre-wrap; /* Mantener los espacios y saltos de línea */
+    word-wrap: break-word; /* Permitir que el texto largo se ajuste */
+}
+
+.copy-code {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #00b894; /* Color del botón de copiar */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: background-color 0.3s; /* Transición suave para el botón */
+}
+
+.copy-code:hover {
+    background-color: #019a73; /* Color al pasar el ratón */
+}
