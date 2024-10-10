@@ -1,1 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 05</title>
+    <link rel="stylesheet" href="stylecodigos.css">
+</head>
+<body>
 
+<nav>
+    <h3>Semana 06</h3>
+    <button onclick="showExercise(1)">Ejercicio 01</button>
+    <button onclick="showExercise(2)">Ejercicio 02</button>
+    <button onclick="showExercise(3)">Ejercicio 03</button>
+    <button onclick="showExercise(4)">Ejercicio 04</button>
+    <button><a href="proyectos.html" style="color: white; text-decoration: none;">VOLVER</a></button>
+</nav>
+
+<section id="exercise-1" class="active">
+    <h2>Ejercicio 01: Cálculo de sueldo neto para vendedores</h2>
+    <p><strong>Enunciado:</strong> Una empresa paga a sus vendedores un sueldo bruto que se calcula sumando un sueldo básico más una comisión. El sueldo básico es S/. 350.75. La comisión es igual al 5% del importe total vendido en el mes. Por ley, todo empleado está sujeto a un descuento igual al 15% del sueldo bruto. Diseñe un algoritmo que imprima la boleta de un vendedor indicando el sueldo básico, la comisión, el sueldo bruto, el descuento y el sueldo neto.</p>
+    <p><strong>Requerimientos Funcionales:</strong></p>
+    <ul>
+        <li>Calcular la comisión (5% de las ventas).</li>
+        <li>Calcular el sueldo bruto sumando el sueldo básico y la comisión.</li>
+        <li>Aplicar un descuento del 15% sobre el sueldo bruto.</li>
+        <li>Calcular el sueldo neto restando el descuento al sueldo bruto.</li>
+    </ul>
+    <p><strong>Código en Dart:</strong></p>
+    <div class="code-container">
+        <button class="copy-code" onclick="copyCode('dart-code-1')">Copiar código</button>
+        <pre id="dart-code-1">
+import 'dart:io';
+
+class Vendedor {
+  double sueldoBasico = 350.75;
+  double ventas = 0.0;
+
+  void ingresarVentas() {
+    print('Ingrese el importe total vendido en el mes:');
+    String? input = stdin.readLineSync();
+    ventas = double.parse(input!);
+  }
+
+  double calcularComision() {
+    return ventas * 0.05;
+  }
+
+  double calcularSueldoBruto() {
+    return sueldoBasico + calcularComision();
+  }
+
+  double calcularDescuento() {
+    return calcularSueldoBruto() * 0.15;
+  }
+
+  double calcularSueldoNeto() {
+    return calcularSueldoBruto() - calcularDescuento();
+  }
+
+  void imprimirBoleta() {
+    print('--- Boleta de Pago ---');
+    print('Sueldo Básico: S/ $sueldoBasico');
+    print('Comisión (5% de ventas): S/ ${calcularComision()}');
+    print('Sueldo Bruto: S/ ${calcularSueldoBruto()}');
+    print('Descuento (15% del sueldo bruto): S/ ${calcularDescuento()}');
+    print('Sueldo Neto: S/ ${calcularSueldoNeto()}');
+  }
+}
+
+void main() {
+  Vendedor vendedor = Vendedor();
+  vendedor.ingresarVentas();
+  vendedor.imprimirBoleta();
+}
+        </pre>
+    </div>
+</section>
+
+<section id="exercise-2">
+    <h2>Ejercicio 02: Distribución de inversión en una feria</h2>
+    <p><strong>Enunciado:</strong> Dado el monto total de dinero a invertir, diseñe un programa que determine cuánto gastará la empresa en cada rubro (alquiler, publicidad, transporte, etc.).</p>
+    <p><strong>Requerimientos Funcionales:</strong></p>
+    <ul>
+        <li>Solicitar el monto total de inversión.</li>
+        <li>Calcular los gastos para cada rubro en base a los porcentajes establecidos.</li>
+        <li>Imprimir los valores distribuidos en cada rubro.</li>
+    </ul>
+    <p><strong>Código en Dart:</strong></p>
+    <div class="code-container">
+        <button class="copy-code" onclick="copyCode('dart-code-2')">Copiar código</button>
+        <pre id="dart-code-2">
+import 'dart:io';
+
+void calcularGastos(double inversion) {
+  var rubros = {
+    'Alquiler de espacio': 0.23,
+    'Publicidad': 0.07,
+    'Transporte': 0.26,
+    'Servicios feriales': 0.12,
+    'Decoración': 0.21,
+    'Gastos varios': 0.11
+  };
+
+  rubros.forEach((rubro, porcentaje) {
+    print('Gasto en $rubro: S/ ${(inversion * porcentaje).toStringAsFixed(2)}');
+  });
+}
+
+void main() {
+  print('Ingrese el monto total de inversión:');
+  double inversion = double.parse(stdin.readLineSync()!);
+
+  calcularGastos(inversion);
+}
+        </pre>
+    </div>
+</section>
+
+<section id="exercise-3">
+    <h2>Ejercicio 03: Descuento en la compra de camisas</h2>
+    <p><strong>Enunciado:</strong> Una tienda ofrece un descuento de 7% + 7%. Diseñe un programa que determine el importe de la compra, los descuentos y el importe a pagar.</p>
+    <p><strong>Requerimientos Funcionales:</strong></p>
+    <ul>
+        <li>Solicitar el precio del producto y la cantidad de unidades.</li>
+        <li>Calcular el primer y segundo descuento.</li>
+        <li>Determinar el importe a pagar aplicando ambos descuentos.</li>
+    </ul>
+    <p><strong>Código en Dart:</strong></p>
+    <div class="code-container">
+        <button class="copy-code" onclick="copyCode('dart-code-3')">Copiar código</button>
+        <pre id="dart-code-3">
+import 'dart:io';
+
+void calcularDescuentos(double precio, int cantidad) {
+  double importeCompra = precio * cantidad;
+  double primerDescuento = importeCompra * 0.07;
+  double segundoDescuento = (importeCompra - primerDescuento) * 0.07;
+  double totalDescuento = primerDescuento + segundoDescuento;
+  double importePagar = importeCompra - totalDescuento;
+
+  print('Importe de la compra: S/ $importeCompra');
+  print('Primer descuento (7%): S/ $primerDescuento');
+  print('Segundo descuento (7% sobre el resto): S/ $segundoDescuento');
+  print('Total descuento: S/ $totalDescuento');
+  print('Importe a pagar: S/ $importePagar');
+}
+
+void main() {
+  print('Ingrese el precio de la camisa:');
+  double precio = double.parse(stdin.readLineSync()!);
+
+  print('Ingrese la cantidad de camisas:');
+  int cantidad = int.parse(stdin.readLineSync()!);
+
+  calcularDescuentos(precio, cantidad);
+}
+        </pre>
+    </div>
+</section>
+
+<section id="exercise-4">
+    <h2>Ejercicio 04: Cálculo de sueldo con bonificación por hijos</h2>
+    <p><strong>Enunciado:</strong> El sueldo bruto de los empleados de una empresa se calcula sumando el sueldo básico más la bonificación por hijos. El sueldo básico se calcula multiplicando las horas trabajadas por la tarifa horaria. Además, el empleado tiene un descuento en base al sueldo bruto. Diseñe un programa que determine el sueldo básico, el sueldo bruto, el descuento y el sueldo neto que le corresponde.</p>
+    <p><strong>Requerimientos Funcionales:</strong></p>
+    <ul>
+        <li>Solicitar la categoría del empleado (A o B) y las horas trabajadas.</li>
+        <li>Calcular la bonificación por hijos.</li>
+        <li>Calcular el descuento en base al sueldo bruto.</li>
+        <li>Determinar el sueldo neto.</li>
+    </ul>
+    <p><strong>Código en Dart:</strong></p>
+    <div class="code-container">
+        <button class="copy-code" onclick="copyCode('dart-code-4')">Copiar código</button>
+        <pre id="dart-code-4">
+import 'dart:io';
+
+double calcularTarifaHoraria(String categoria) {
+  if (categoria == 'A') {
+    return 45.0;
+  } else if (categoria == 'B') {
+    return 37.5;
+  } else {
+    throw Exception('Categoría no válida');
+  }
+}
+
+double calcularBonificacion(int hijos) {
+  if (hijos <= 3) {
+    return hijos * 40.5;
+  } else {
+    return hijos * 35.0;
+  }
+}
+
+double calcularDescuento(double sueldoBruto) {
+  if (sueldoBruto >= 3500) {
+    return sueldoBruto * 0.135;
+  } else {
+    return sueldoBruto * 0.10;
+  }
+}
+
+void main() {
+  print('Ingrese la categoría del empleado (A o B):');
+  String categoria = stdin.readLineSync()!.toUpperCase();
+
+  print('Ingrese las horas trabajadas:');
+  int horasTrabajadas = int.parse(stdin.readLineSync()!);
+
+  print('Ingrese la cantidad de hijos:');
+  int hijos = int.parse(stdin.readLineSync()!);
+
+  double tarifaHoraria = calcularTarifaHoraria(categoria);
+  double sueldoBasico = horasTrabajadas * tarifaHoraria;
+  double bonificacion = calcularBonificacion(hijos);
+  double sueldoBruto = sueldoBasico + bonificacion;
+  double descuento = calcularDescuento(sueldoBruto);
+  double sueldoNeto = sueldoBruto - descuento;
+
+  print('Sueldo Básico: S/ $sueldoBasico');
+  print('Bonificación por hijos: S/ $bonificacion');
+  print('Sueldo Bruto: S/ $sueldoBruto');
+  print('Descuento: S/ $descuento');
+  print('Sueldo Neto: S/ $sueldoNeto');
+}
+        </pre>
+    </div>
+</section>
+
+<script>
+    function showExercise(exerciseNumber) {
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => section.classList.remove('active'));
+        const activeSection = document.getElementById(`exercise-${exerciseNumber}`);
+        activeSection.classList.add('active');
+    }
+
+    function copyCode(elementId) {
+        const codeElement = document.getElementById(elementId).innerText;
+        navigator.clipboard.writeText(codeElement).then(() => {
+            alert('Código copiado al portapapeles');
+        }).catch(err => {
+            console.error('Error al copiar el código', err);
+        });
+    }
+</script>
+
+</body>
+</html>
