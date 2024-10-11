@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 07</title>
+    <link rel="stylesheet" href="stylecodigos.css"> 
+</head>
+<body>
+
+<nav>
+    <h3>Semana 07</h3>
+    <button onclick="showExercise(1)">Ejercicio 01</button>
+    <button onclick="showExercise(2)">Ejercicio 02</button>
+    <button onclick="showExercise(3)">Ejercicio 03</button>
+    <button onclick="showExercise(4)">Ejercicio 04</button>
+    <button><a href="proyectos.html" style="color: white; text-decoration: none;">VOLVER</a></button>
+</nav>
+
+<section id="exercise-1" class="active">
+    <h2>Ejercicio 01: Rebaja de pensión universitaria</h2>
+    <p><strong>Enunciado:</strong> En una universidad, los alumnos están clasificados en cuatro categorías. A cada categoría le corresponde una pensión mensual distinta. Semestralmente, la universidad efectúa rebajas en las pensiones de sus estudiantes a partir del segundo ciclo, basándose en el promedio ponderado del ciclo anterior en porcentajes dados.</p>
+    <p><strong>Requerimientos Funcionales:</strong></p>
+    <ul>
+        <li>Determinar el descuento aplicable basado en el promedio ponderado.</li>
+        <li>Calcular la nueva pensión después de aplicar el descuento.</li>
+    </ul>
+    <p><strong>Código en Dart:</strong></p>
+    <div class="code-container">
+        <button class="copy-code" onclick="copyCode('dart-code-1')">Copiar código</button>
+        <pre id="dart-code-1">
+import 'dart:io';
+
+class Universidad {
+  double obtenerPension(String categoria) {
+    if (categoria == 'A') return 550;
+    if (categoria == 'B') return 500;
+    if (categoria == 'C') return 460;
+    if (categoria == 'D') return 400;
+    return 0;
+  }
+
+  double calcularDescuento(double promedio) {
+    if (promedio >= 14 && promedio < 16) return 0.10;
+    if (promedio >= 16 && promedio < 18) return 0.12;
+    if (promedio >= 18) return 0.15;
+    return 0;
+  }
+
+  void calcularNuevaPension(String categoria, double promedio) {
+    double pension = obtenerPension(categoria);
+    double descuento = calcularDescuento(promedio);
+    double pensionConDescuento = pension * (1 - descuento);
+    print('Pensión original: S/ $pension');
+    print('Descuento aplicado: ${descuento * 100}%');
+    print('Nueva pensión: S/ $pensionConDescuento');
+  }
+}
+
+void main() {
+  Universidad universidad = Universidad();
+  print('Ingrese la categoría del estudiante (A, B, C, D):');
+  String categoria = stdin.readLineSync()!.toUpperCase();
+  print('Ingrese el promedio ponderado del ciclo anterior:');
+  double promedio = double.parse(stdin.readLineSync()!);
+
+  universidad.calcularNuevaPension(categoria, promedio);
+}
+        </pre>
+    </div>
+</section>
+
+<section id="exercise-2">
+    <h2>Ejercicio 02: Evaluación de empleados</h2>
+    <p><strong>Enunciado:</strong> Una empresa evalúa a sus empleados bajo dos criterios: puntualidad y rendimiento. Cada uno tiene un puntaje determinado según una tabla específica. Basándose en el puntaje total, el empleado recibe una bonificación anual.</p>
+    <p><strong>Requerimientos Funcionales:</strong></p>
+    <ul>
+        <li>Calcular el puntaje por puntualidad y rendimiento.</li>
+        <li>Sumar los puntajes y calcular la bonificación.</li>
+    </ul>
+    <p><strong>Código en Dart:</strong></p>
+    <div class="code-container">
+        <button class="copy-code" onclick="copyCode('dart-code-2')">Copiar código</button>
+        <pre id="dart-code-2">
+import 'dart:io';
+
+class Empleado {
+  int calcularPuntualidad(int tardanza) {
+    if (tardanza == 0) return 10;
+    if (tardanza <= 1) return 8;
+    if (tardanza <= 3) return 6;
+    if (tardanza <= 5) return 4;
+    if (tardanza <= 9) return 2;
+    return 0;
+  }
+
+  int calcularRendimiento(int observaciones) {
+    if (observaciones == 0) return 10;
+    if (observaciones == 1) return 8;
+    if (observaciones == 2) return 5;
+    if (observaciones == 3) return 3;
+    return 0;
+  }
+
+  double calcularBonificacion(int puntajeTotal) {
+    if (puntajeTotal < 11) return 2.5;
+    if (puntajeTotal <= 13) return 5;
+    if (puntajeTotal <= 16) return 7.5;
+    if (puntajeTotal <= 19) return 10;
+    return 12.5;
+  }
+
+  void evaluarEmpleado(int tardanza, int observaciones) {
+    int puntajePuntualidad = calcularPuntualidad(tardanza);
+    int puntajeRendimiento = calcularRendimiento(observaciones);
+    int puntajeTotal = puntajePuntualidad + puntajeRendimiento;
+    double bonificacion = calcularBonificacion(puntajeTotal);
+
+    print('Puntaje por puntualidad: $puntajePuntualidad');
+    print('Puntaje por rendimiento: $puntajeRendimiento');
+    print('Puntaje total: $puntajeTotal');
+    print('Bonificación anual: S/ $bonificacion por punto');
+  }
+}
+
+void main() {
+  Empleado empleado = Empleado();
+  print('Ingrese los minutos de tardanza:');
+  int tardanza = int.parse(stdin.readLineSync()!);
+  print('Ingrese la cantidad de observaciones:');
+  int observaciones = int.parse(stdin.readLineSync()!);
+
+  empleado.evaluarEmpleado(tardanza, observaciones);
+}
+        </pre>
+    </div>
+</section>
+
+<section id="exercise-3">
+    <h2>Ejercicio 03: Descuento en tienda de chocolates</h2>
+    <p><strong>Enunciado:</strong> Una dulcería vende chocolates y aplica descuentos según la cantidad de chocolates adquiridos. Además, se ofrece un obsequio de caramelos si el monto de compra supera un valor específico.</p>
+    <p><strong>Requerimientos Funcionales:</strong></p>
+    <ul>
+        <li>Calcular el descuento en base a la cantidad de chocolates.</li>
+        <li>Determinar el monto final y los obsequios de caramelos.</li>
+    </ul>
+    <p><strong>Código en Dart:</strong></p>
+    <div class="code-container">
+        <button class="copy-code" onclick="copyCode('dart-code-3')">Copiar código</button>
+        <pre id="dart-code-3">
+import 'dart:io';
+
+class Dulceria {
+  double obtenerPrecioUnitario(String tipo) {
+    if (tipo == 'Primor') return 8.5;
+    if (tipo == 'Dulzura') return 10.0;
+    if (tipo == 'Tentación') return 7.0;
+    if (tipo == 'Explosión') return 12.5;
+    return 0;
+  }
+
+  double calcularDescuento(int cantidad) {
+    if (cantidad < 5) return 0.04;
+    if (cantidad < 10) return 0.065;
+    if (cantidad < 15) return 0.09;
+    return 0.115;
+  }
+
+  int calcularObsequio(double importe) {
+    return importe >= 250 ? 3 : 2;
+  }
+
+  void calcularCompra(String tipo, int cantidad) {
+    double precioUnitario = obtenerPrecioUnitario(tipo);
+    double importe = precioUnitario * cantidad;
+    double descuento = importe * calcularDescuento(cantidad);
+    double total = importe - descuento;
+    int obsequio = calcularObsequio(importe) * cantidad;
+
+    print('Importe total: S/ $importe');
+    print('Descuento: S/ $descuento');
+    print('Total a pagar: S/ $total');
+    print('Caramelos de obsequio: $obsequio');
+  }
+}
+
+void main() {
+  Dulceria dulceria = Dulceria();
+  print('Ingrese el tipo de chocolate (Primor, Dulzura, Tentación, Explosión):');
+  String tipo = stdin.readLineSync()!;
+  print('Ingrese la cantidad de chocolates:');
+  int cantidad = int.parse(stdin.readLineSync()!);
+
+  dulceria.calcularCompra(tipo, cantidad);
+}
+        </pre>
+    </div>
+</section>
+
+<section id="exercise-4">
+    <h2>Ejercicio 04: Regalos por compra en tienda</h2>
+    <p><strong>Enunciado:</strong> Una tienda vende productos con diferentes precios. La tienda ofrece un regalo basado en la cantidad de unidades adquiridas de un producto específico.</p>
+    <p><strong>Requerimientos Funcionales:</strong></p>
+    <ul>
+        <li>Calcular el importe total de la compra.</li>
+        <li>Determinar el regalo en base a la cantidad de unidades adquiridas.</li>
+    </ul>
+    <p><strong>Código en Dart:</strong></p>
+    <div class="code-container">
+        <button class="copy-code" onclick="copyCode('dart-code-4')">Copiar código</button>
+        <pre id="dart-code-4">
+import 'dart:io';
+
+class Tienda {
+  double obtenerPrecio(String tipo) {
+    if (tipo == 'P1') return 15.0;
+    if (tipo == 'P2') return 17.5;
+    if (tipo == 'P3') return 20.0;
+    return 0;
+  }
+
+  String obtenerRegalo(int cantidad) {
+    if (cantidad < 26) return 'Un lapicero';
+    if (cantidad <= 50) return 'Un cuaderno';
+    return 'Una agenda';
+  }
+
+  void calcularCompra(String tipo, int cantidad) {
+    double precio = obtenerPrecio(tipo);
+    double importe = precio * cantidad;
+    String regalo = obtenerRegalo(cantidad);
+
+    print('Importe a pagar: S/ $importe');
+    print('Regalo: $regalo');
+  }
+}
+
+void main() {
+  Tienda tienda = Tienda();
+  print('Ingrese el tipo de producto (P1, P2, P3):');
+  String tipo = stdin.readLineSync()!;
+  print('Ingrese la cantidad de unidades adquiridas:');
+  int cantidad = int.parse(stdin.readLineSync()!);
+
+  tienda.calcularCompra(tipo, cantidad);
+}
+        </pre>
+    </div>
+</section>
+
+<script>
+    function showExercise(exerciseNumber) {
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => section.classList.remove('active'));
+        const activeSection = document.getElementById(`exercise-${exerciseNumber}`);
+        activeSection.classList.add('active');
+    }
+
+    function copyCode(elementId) {
+        const codeElement = document.getElementById(elementId).innerText;
+        navigator.clipboard.writeText(codeElement).then(() => {
+            alert('Código copiado al portapapeles');
+        }).catch(err => {
+            console.error('Error al copiar el código', err);
+        });
+    }
+</script>
+
+</body>
+</html>
